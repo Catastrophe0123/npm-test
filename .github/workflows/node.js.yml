@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+          always-auth: true
       - name: set remote github
         run: git remote set-url origin https://${{ secrets.GITHUBTOKEN }}@github.com/Catastrophe0123/npm-test.git
       - run: git config --global user.email "ci@githubaction.com"
@@ -39,8 +40,9 @@ jobs:
         run: npm whoami
       - name: Publish
         env:
-            NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-        run: yarn publish:np patch --contents=dist --message="[skip ci] v%s"
+            NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        run: yarn publish:np patch --message="[skip ci] v%s"
+        # run: yarn publish:np patch --contents=dist --message="[skip ci] v%s"
         # run: yarn publish:np patch --contents=dist --no-publish --message="[skip ci] v%s"
         
       

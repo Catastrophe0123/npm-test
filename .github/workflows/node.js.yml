@@ -41,7 +41,7 @@ jobs:
       - name: Publish
         env:
             NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-        run: yarn publish:np patch --message="[skip ci] v%s"
+        run: npm run publish:np patch --message="[skip ci] v%s"
         # run: yarn publish:np patch --contents=dist --message="[skip ci] v%s"
         # run: yarn publish:np patch --contents=dist --no-publish --message="[skip ci] v%s"
         

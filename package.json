@@ -7,6 +7,9 @@
 	"repository": "https://github.com/Catastrophe0123/npm-test.git",
 	"author": "Navaneeth V",
 	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"build": "rm -rf ./dist && tsc",
 		"watch:ts": "ts-node-dev --respawn --transpile-only ./src/index.ts",

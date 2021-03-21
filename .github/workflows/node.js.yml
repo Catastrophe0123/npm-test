@@ -38,6 +38,9 @@ jobs:
         run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - name: Verify Login
         run: npm whoami
+      - env:
+          NPM_REGISTRY_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm config set _auth $NPM_REGISTRY_TOKEN && npm config set always-auth=true && npm config set email=vnavaneeth15@gmail.com
       # - run: npm access ls-collaborators @catastrophe0123/npm-test
       - name: Publish
         env:

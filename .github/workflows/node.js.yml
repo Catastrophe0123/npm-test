@@ -46,7 +46,7 @@ jobs:
       - name: Release Tag
         env:
             NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-        run: npm run publish:np patch --no-publish --message="[skip ci] v%s"
+        run: yarn publish:np patch --no-publish --message="[skip ci] v%s"
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

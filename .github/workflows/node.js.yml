@@ -38,6 +38,7 @@ jobs:
         run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - name: Verify Login
         run: npm whoami
+      - run: npm access ls-collaborators npm-test
       - name: Publish
         env:
             NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

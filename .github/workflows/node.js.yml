@@ -36,7 +36,7 @@ jobs:
       - name: Publish
         env:
             NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-        run: yarn publish:np patch --contents=dist
+        run: yarn publish:np patch --contents=dist --no-publish
         
       
     

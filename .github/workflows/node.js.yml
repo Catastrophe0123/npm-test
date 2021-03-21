@@ -22,14 +22,19 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
       - name: print the commit message
-        run: echo "$COMMIT_MESSAGE"
         env:
           COMMIT_MESSAGE: ${{ github.event.head_commit.message }}        
-      - run: yarn
+        run: echo "$COMMIT_MESSAGE"
+      - name: NPM Login
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn
       - run: yarn build
-      - run: yarn publish:np patch --contents=dist
+      - name: Publish
         env:
             NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+        run: yarn publish:np patch --contents=dist
+        
       
     
 

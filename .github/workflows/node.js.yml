@@ -25,17 +25,17 @@ jobs:
         env:
           COMMIT_MESSAGE: ${{ github.event.head_commit.message }}        
         run: echo "$COMMIT_MESSAGE"
-      - name: NPM Login
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn
+      - run: yarn
       - run: yarn build
-      - run: echo "//<npm-registry>:8080/:_authToken=$NPME_AUTH_TOKEN" > ~/.npmrc
-      - name: Verify Login
-        run: npm whoami
+      # - name: NPM Login
+      #   env:
+      #     NPM_TOKEN: 
+      #   run: echo "//registry.npmjs.org/:_authToken=$NPME_AUTH_TOKEN" > ~/.npmrc
+      # - name: Verify Login
+      #   run: npm whoami
       - name: Publish
         env:
-            NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+            NPM_TOKEN: ${{secrets.NPM_TOKEN}}
         run: yarn publish:np patch --contents=dist
         
       

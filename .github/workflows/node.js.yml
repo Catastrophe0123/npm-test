@@ -14,9 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: 12
+          registry-url: 'https://registry.npmjs.org'
           always-auth: true
       - name: set remote github
         run: git remote set-url origin https://${{ secrets.GITHUBTOKEN }}@github.com/Catastrophe0123/npm-test.git
@@ -38,14 +39,18 @@ jobs:
         run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - name: Verify Login
         run: npm whoami
-      - env:
-          NPM_REGISTRY_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm config set _auth $NPM_REGISTRY_TOKEN && npm config set always-auth=true && npm config set email=vnavaneeth15@gmail.com
+      # - env:
+      #     NPM_REGISTRY_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #   run: npm config set _auth $NPM_REGISTRY_TOKEN && npm config set always-auth=true && npm config set email=vnavaneeth15@gmail.com
       # - run: npm access ls-collaborators @catastrophe0123/npm-test
-      - name: Publish
+      - name: Release Tag
         env:
             NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-        run: npm run publish:np patch --message="[skip ci] v%s"
+        run: npm run publish:np patch --no-publish --message="[skip ci] v%s"
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
         # run: yarn publish:np patch --contents=dist --message="[skip ci] v%s"
         # run: yarn publish:np patch --contents=dist --no-publish --message="[skip ci] v%s"
         

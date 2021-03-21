@@ -17,6 +17,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - name: set remote github
+        run: git remote set-url origin https://${{ secrets.GITHUBTOKEN }}@github.com/Catastrophe0123/news-aggregator.git
+      - run: git config --global user.email "ci@githubaction.com"
+      - run: git config --global user.name "githubaction"
       - name: Print the github context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -36,7 +40,7 @@ jobs:
       - name: Publish
         env:
             NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-        run: yarn publish:np patch --contents=dist --no-publish
+        run: yarn publish:np patch --contents=dist --no-publish --message="[skip ci] v%s"
         
       
     

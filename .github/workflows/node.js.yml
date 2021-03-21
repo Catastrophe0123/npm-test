@@ -31,12 +31,12 @@ jobs:
         run: echo "$COMMIT_MESSAGE"
       - run: yarn
       - run: yarn build
-      # - name: NPM Login
-      #   env:
-      #     NPM_TOKEN: 
-      #   run: echo "//registry.npmjs.org/:_authToken=$NPME_AUTH_TOKEN" > ~/.npmrc
-      # - name: Verify Login
-      #   run: npm whoami
+      - name: NPM Login
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+      - name: Verify Login
+        run: npm whoami
       - name: Publish
         env:
             NPM_TOKEN: ${{secrets.NPM_TOKEN}}

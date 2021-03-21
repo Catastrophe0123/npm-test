@@ -8,7 +8,7 @@
 	"author": "Navaneeth V",
 	"license": "MIT",
 	"publishConfig": {
-		"access": "public",
+		"access": "public"
 	},
 	"scripts": {
 		"build": "rm -rf ./dist && tsc",

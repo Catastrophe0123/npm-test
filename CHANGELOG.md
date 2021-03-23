@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Catastrophe0123/npm-test/compare/v0.2.0...v0.3.0) (2021-03-23)
+
+
+### Features
+
+* remove exclamation marks ([775082e](https://github.com/Catastrophe0123/npm-test/commit/775082e3c98c121e84d1b316ee8e65526cc03d4e))
+
+
+
+
+
+# [0.3.0](https://github.com/Catastrophe0123/npm-test/compare/v0.2.0...v0.3.0) (2021-03-23)
+
+
+### Features
+
+* remove exclamation marks ([775082e](https://github.com/Catastrophe0123/npm-test/commit/775082e3c98c121e84d1b316ee8e65526cc03d4e))
+
+
+
+
+
 # [0.2.0](https://github.com/Catastrophe0123/npm-test/compare/v0.1.2...v0.2.0) (2021-03-23)
 
 

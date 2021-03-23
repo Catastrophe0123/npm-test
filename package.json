@@ -1,6 +1,6 @@
 {
 	"name": "@catastrophe0123/npm-test",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "testing out npm publishing",
 	"main": "dist/index.js",
 	"bin": "dist/main.js",
